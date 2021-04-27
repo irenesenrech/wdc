@@ -98,20 +98,18 @@
       $.getJSON(
         "https://opendata.aemet.es/opendata/api/valores/climatologicos/diarios/datos/fechaini/2021-04-01T00:00:00UTC/fechafin/2021-04-14T23:59:59UTC/estacion/3194U/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpcmVuZS5zYXJhdmlhQHRoZWluZm9ybWF0aW9ubGFiLmVzIiwianRpIjoiMGFjZjY1MTUtOTgwZS00MWU2LWI3ZDktNmEyNDA5MmVjODhiIiwiaXNzIjoiQUVNRVQiLCJpYXQiOjE2MTk1NjI1NjksInVzZXJJZCI6IjBhY2Y2NTE1LTk4MGUtNDFlNi1iN2Q5LTZhMjQwOTJlYzg4YiIsInJvbGUiOiIifQ.26XpIcH6YlQS8SkxIm-AgAkPelqKGivgc3nFFfZebVg",
         function (resp) {
-          var apiData = resp;
-          for (i = 0, len = apiData.length; i < len; i++) {
-            var nestedData = apiData[i];
+          for (var i in resp) {
             tableData.push({
-            fecha: nestedData.fecha,
-            indicativo: nestedData.indicativo,
-            nombre: nestedData.nombre,
-            provincia: nestedData.provincia,
-            altitud: Number(nestedData.altitud),
-            tmed: Number(nestedData.tmed),
-            tmin: Number(nestedData.tmin),
-            horatmin: nestedData.horatmin,
-            tmax: Number(nestedData.tmax),
-            horatmax: nestedData.horatmax,
+            fecha: i.fecha,
+            indicativo: i.indicativo,
+            nombre: i.nombre,
+            provincia: i.provincia,
+            altitud: Number(i.altitud),
+            tmed: Number(i.tmed),
+            tmin: Number(i.tmin),
+            horatmin: i.horatmin,
+            tmax: Number(i.tmax),
+            horatmax: i.horatmax,
             });
           }
           table.appendRows(tableData);
