@@ -102,16 +102,16 @@
           for (i = 0, len = apiData.length; i < len; i++) {
             var nestedData = apiData[i];
             tableData.push({
-            fecha: nestedData["fecha"],
-            indicativo: nestedData["indicativo"],
-            nombre: nestedData["nombre"],
-            provincia: nestedData["provincia"],
-            altitud: Number(nestedData["altitud"]),
-            tmed: Number(nestedData["tmed"]),
-            tmin: Number(nestedData["tmin"]),
-            horatmin: nestedData["horatmin"],
-            tmax: Number(nestedData["tmax"]),
-            horatmax: nestedData["horatmax"],
+            fecha: nestedData.fecha,
+            indicativo: nestedData.indicativo,
+            nombre: nestedData.nombre,
+            provincia: nestedData.provincia,
+            altitud: Number(nestedData.altitud),
+            tmed: Number(nestedData.tmed),
+            tmin: Number(nestedData.tmin),
+            horatmin: nestedData.horatmin,
+            tmax: Number(nestedData.tmax),
+            horatmax: nestedData.horatmax,
             });
           }
           table.appendRows(tableData);
