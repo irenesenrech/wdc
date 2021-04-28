@@ -69,7 +69,7 @@ var time = "month";
   tableau.registerConnector(myConnector);
 })();
 
-document.querySelector("#trans").addEventListener("click", makeSth("trans"));
+document.querySelector("#trans").addEventListener("click", getData());
 document.querySelector("#merca").addEventListener("click", makeSth("merca"));
 
 function makeSth (param) {
