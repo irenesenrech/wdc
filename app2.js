@@ -97,7 +97,7 @@
         $.getJSON(
             "https://opendata.aemet.es/opendata/api/valores/climatologicos/diarios/datos/fechaini/2021-04-01T00:00:00UTC/fechafin/2021-04-14T23:59:59UTC/estacion/3194U/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpcmVuZS5zYXJhdmlhQHRoZWluZm9ybWF0aW9ubGFiLmVzIiwianRpIjoiMGFjZjY1MTUtOTgwZS00MWU2LWI3ZDktNmEyNDA5MmVjODhiIiwiaXNzIjoiQUVNRVQiLCJpYXQiOjE2MTk1NjI1NjksInVzZXJJZCI6IjBhY2Y2NTE1LTk4MGUtNDFlNi1iN2Q5LTZhMjQwOTJlYzg4YiIsInJvbGUiOiIifQ.26XpIcH6YlQS8SkxIm-AgAkPelqKGivgc3nFFfZebVg",
             function (resp) {
-                var apiArray = resp[0];
+                var apiArray = resp;
                 for (i = 0, len = apiArray.length; i < len; i++) {
                     var apiDict = apiArray[i];
                     tableData.push({
@@ -112,6 +112,7 @@
                         tmax: Number(apiDict["tmax"]),
                         horatmax: apiDict["horatmax"],
                     });
+                    console.log(tableData);
                     table.appendRows(tableData);
                     doneCallback();
                 };
