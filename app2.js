@@ -91,35 +91,32 @@
     };
   
     myConnector.getData = function (table, doneCallback) {
-      let tableData = [];
-      var i = 0;
-      var j = 0;
-  
-      $.getJSON(
-        "https://opendata.aemet.es/opendata/api/valores/climatologicos/diarios/datos/fechaini/2021-04-01T00:00:00UTC/fechafin/2021-04-14T23:59:59UTC/estacion/3194U/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpcmVuZS5zYXJhdmlhQHRoZWluZm9ybWF0aW9ubGFiLmVzIiwianRpIjoiMGFjZjY1MTUtOTgwZS00MWU2LWI3ZDktNmEyNDA5MmVjODhiIiwiaXNzIjoiQUVNRVQiLCJpYXQiOjE2MTk1NjI1NjksInVzZXJJZCI6IjBhY2Y2NTE1LTk4MGUtNDFlNi1iN2Q5LTZhMjQwOTJlYzg4YiIsInJvbGUiOiIifQ.26XpIcH6YlQS8SkxIm-AgAkPelqKGivgc3nFFfZebVg",
-        function (resp) {
-          for (var i in resp) {
-            tableData.push({
-            fecha: i.fecha,
-            indicativo: i.indicativo,
-            nombre: i.nombre,
-            provincia: i.provincia,
-            altitud: Number(i.altitud),
-            tmed: Number(i.tmed),
-            tmin: Number(i.tmin),
-            horatmin: i.horatmin,
-            tmax: Number(i.tmax),
-            horatmax: i.horatmax,
-            });
-          }
-          table.appendRows(tableData);
-          doneCallback();
-        }
-      );
+        let tableData = [];
+        var i = 0;
+        var j = 0;
+        $.getJSON(
+            "https://opendata.aemet.es/opendata/api/valores/climatologicos/diarios/datos/fechaini/2021-04-01T00:00:00UTC/fechafin/2021-04-14T23:59:59UTC/estacion/3194U/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpcmVuZS5zYXJhdmlhQHRoZWluZm9ybWF0aW9ubGFiLmVzIiwianRpIjoiMGFjZjY1MTUtOTgwZS00MWU2LWI3ZDktNmEyNDA5MmVjODhiIiwiaXNzIjoiQUVNRVQiLCJpYXQiOjE2MTk1NjI1NjksInVzZXJJZCI6IjBhY2Y2NTE1LTk4MGUtNDFlNi1iN2Q5LTZhMjQwOTJlYzg4YiIsInJvbGUiOiIifQ.26XpIcH6YlQS8SkxIm-AgAkPelqKGivgc3nFFfZebVg",
+            function (resp) {
+                var apiDict = resp[0];
+                tableData.push({
+                    fecha: apiDict["fecha"],
+                    indicativo: apiDict["indicativo"],
+                    nombre: apiDict["nombre"],
+                    provincia: apiDict["provincia"],
+                    altitud: Number(apiDict["altitud"]),
+                    tmed: Number(apiDict["tmed"]),
+                    tmin: Number(apiDict["tmin"]),
+                    horatmin: apiDict["horatmin"],
+                    tmax: Number(apiDict["tmax"]),
+                    horatmax: apiDict["horatmax"],
+                });
+                table.appendRows(tableData);
+                doneCallback();
+            }
+        );
     };
-  
     tableau.registerConnector(myConnector);
-  })();
+})();
   
   document.querySelector("#getData").addEventListener("click", getData);
   
