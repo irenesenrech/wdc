@@ -1,5 +1,5 @@
-var parameter = "trans";
-var time = "month";
+var str1 = "transporte/energia-no-suministrada-ens";
+var str2 = "month";
 (function () {
   var myConnector = tableau.makeConnector();
   myConnector.getSchema = function (schemaCallback) {
@@ -44,7 +44,7 @@ var time = "month";
     var i = 0;
     var j = 0;
     $.getJSON(
-      `https://apidatos.ree.es/es/datos/transporte/energia-no-suministrada-ens?start_date=2020-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=`,
+      `https://apidatos.ree.es/es/datos/\${str1}?start_date=2021-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=hour${str2}`,
       function (resp) {
         var apiData = resp.included;
         for (i = 0, len = apiData.length; i < len; i++) {
@@ -69,21 +69,24 @@ var time = "month";
   tableau.registerConnector(myConnector);
 })();
 
-document.querySelector("#trans").addEventListener("click", getData());
-document.querySelector("#merca").addEventListener("click", makeSth("merca"));
-
-function makeSth (param) {
-    if (param == "trans") {
-        parameter = "transporte/energia-no-suministrada-ens";
-        time = "month";
-    } else {
-        parameter = "mercados/precios-mercados-tiempo-real";
-        time = "hour";
-    }
-    getData();
-}
+document.querySelector("#trans").addEventListener("click", getData);
+document.querySelector("#merca").addEventListener("click", getData2);
 
 function getData() {
+    getStr();
     tableau.connectionName = "API Datos";
     tableau.submit();
+    function getStr() {
+        str1 = "transporte/energia-no-suministrada-ens";
+        str2 = "month";
+    }
 }
+function getData2() {
+    getStr();
+    tableau.connectionName = "API Datos";
+    tableau.submit();
+        function getStr() {
+            str1 = "mercados/precios-mercados-tiempo-real";
+            str2 = "hour";
+        }
+  }
