@@ -69,10 +69,10 @@ var time = "month";
   tableau.registerConnector(myConnector);
 })();
 
-document.querySelector("#trans").addEventListener("click", getData("trans"));
-document.querySelector("#merca").addEventListener("click", getData("merca"));
+document.querySelector("#trans").addEventListener("click", makeSth("trans"));
+document.querySelector("#merca").addEventListener("click", makeSth("merca"));
 
-function getData(param) {
+function makeSth (param) {
     if (param == "trans") {
         parameter = "transporte/energia-no-suministrada-ens";
         time = "month";
@@ -80,6 +80,10 @@ function getData(param) {
         parameter = "mercados/precios-mercados-tiempo-real";
         time = "hour";
     }
+    getData();
+}
+
+function getData() {
     tableau.connectionName = "API Datos";
     tableau.submit();
 }
