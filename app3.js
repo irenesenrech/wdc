@@ -69,8 +69,8 @@ var str2 = "month";
   tableau.registerConnector(myConnector);
 })();
 
-document.querySelector("#trans").addEventListener("click", getData);
-document.querySelector("#merca").addEventListener("click", getData2);
+document.querySelector("#trans").addEventListener("click", getData2);
+document.querySelector("#merca").addEventListener("click", getData);
 
 function getData() {
     getStr();
