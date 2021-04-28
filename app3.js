@@ -44,7 +44,7 @@ var time = "month";
     var i = 0;
     var j = 0;
     $.getJSON(
-      `https://apidatos.ree.es/es/datos/transporte/energia-no-suministrada-ens?start_date=2020-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=` + time,
+      `https://apidatos.ree.es/es/datos/transporte/energia-no-suministrada-ens?start_date=2020-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=`,
       function (resp) {
         var apiData = resp.included;
         for (i = 0, len = apiData.length; i < len; i++) {
