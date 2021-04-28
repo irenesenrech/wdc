@@ -70,7 +70,7 @@ var str2 = "month";
 })();
 
 document.querySelector("#trans").addEventListener("click", getData);
-document.querySelector("#merca").addEventListener("click", getData2);
+document.querySelector("#merca").addEventListener("click", getData);
 
 function getData2() {
     str1 = "mercados/precios-mercados-tiempo-real";
