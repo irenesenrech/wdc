@@ -69,24 +69,19 @@ var str2 = "month";
   tableau.registerConnector(myConnector);
 })();
 
-/* document.querySelector("#trans").addEventListener("click", getData);
+document.querySelector("#trans").addEventListener("click", getData);
 document.querySelector("#merca").addEventListener("click", getData2);
- */
-function getData() {
-    getStr();
-    tableau.connectionName = "API Datos";
-    tableau.submit();
-    function getStr() {
-        str1 = "transporte/energia-no-suministrada-ens";
-        str2 = "month";
-    }
-}
+
 function getData2() {
-    getStr();
+    str1 = "mercados/precios-mercados-tiempo-real";
+    str2 = "hour";
     tableau.connectionName = "API Datos";
     tableau.submit();
-        function getStr() {
-            str1 = "mercados/precios-mercados-tiempo-real";
-            str2 = "hour";
-        }
   }
+
+  function getData() {
+    str1 = "transporte/energia-no-suministrada-ens";
+    str2 = "month";
+    tableau.connectionName = "API Datos";
+    tableau.submit();
+}
