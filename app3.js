@@ -59,7 +59,7 @@ console.log("This is working!");
                     value: Number(dic.value),
                     lastupdatedate: resp.data.attributes["last-update"],
                     type: apiData[i].type,
-                    id: apiData[i].attributes.id,
+                    id: apiData[i].id,
                 });
             }
         }
