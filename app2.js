@@ -112,10 +112,10 @@
                         tmax: Number(apiDict["tmax"]),
                         horatmax: apiDict["horatmax"],
                     });
-                    console.log(tableData);
-                    table.appendRows(tableData);
-                    doneCallback();
                 };
+                console.log(tableData);
+                table.appendRows(tableData);
+                doneCallback();
             }
         );
     };
