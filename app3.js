@@ -1,5 +1,4 @@
-var myConnector;
-function getConnector() {
+function getData() {
     var str_value = "";
     let element = document.querySelector("#query");
     let value = element.value;
@@ -43,6 +42,7 @@ function getConnector() {
             alias: "Data from API",
             columns: cols,
           };
+      
           schemaCallback([apiTableSchema]);
         };
       
@@ -72,18 +72,11 @@ function getConnector() {
             }
           );
         };
+      
+        tableau.registerConnector(myConnector);
+        tableau.connectionName = "API Tableau";
+        tableau.submit();
     })();
 }
 
-function getData() {
-    tableau.registerConnector(myConnector);
-    tableau.connectionName = "API Tableau";
-    tableau.submit();
-}
-
-function getAll() {
-    getConnector();
-    getData();
-}
-
-document.querySelector("#query").addEventListener("change", getAll);
+document.querySelector("#query").addEventListener("change", getData);
