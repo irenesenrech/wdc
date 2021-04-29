@@ -42,13 +42,6 @@ var str_value = "";
     let tableData = [];
     let i = 0;
     let j = 0;
-    let element = document.querySelector("#query");
-    let value = element.value;
-    if (value=="mercados") {
-        str_value = "mercados/precios-mercados-tiempo-real";
-    } else {
-        str_value = "demanda/demanda-tiempo-real";
-    }
     $.getJSON(
         url = "https://apidatos.ree.es/es/datos/"+str_value+"?start_date=2021-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=hour",
       function (resp) {
@@ -78,6 +71,13 @@ var str_value = "";
 document.querySelector("#query").addEventListener("change", getData);
 
 function getData() {
+    let element = document.querySelector("#query");
+    let value = element.value;
+    if (value=="mercados") {
+        str_value = "mercados/precios-mercados-tiempo-real";
+    } else {
+        str_value = "demanda/demanda-tiempo-real";
+    }
     tableau.connectionName = "API Tableau";
     tableau.submit();
 }
