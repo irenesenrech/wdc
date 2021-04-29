@@ -1,4 +1,4 @@
-document.querySelector("#query").addEventListener("change", (function() {
+document.querySelector("#query").addEventListener("click", (function() {
     var str_value = "";
     let element = document.querySelector("#query");
     let value = element.value;
