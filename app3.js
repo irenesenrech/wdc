@@ -44,9 +44,9 @@ var str_value = "";
     let j = 0;
     let element = document.querySelector("#query");
     let value = element.value;
-    if (value=="Mercados") {
+    if (value=="mercados") {
         str_value = "mercados/precios-mercados-tiempo-real";
-    } else {
+    } else if (value =="demanda") {
         str_value = "demanda/demanda-tiempo-real";
     }
     $.getJSON(
@@ -76,24 +76,6 @@ var str_value = "";
 })();
 
 document.querySelector("#query").addEventListener("change", getData);
-
-/* 
-document.querySelector("#trans").addEventListener("click", getData);
-document.querySelector("#merca").addEventListener("click", getData); */
-
-/* function getData2() {
-    str1 = "mercados/precios-mercados-tiempo-real";
-    str2 = "hour";
-    tableau.connectionName = "API Tableau";
-    tableau.submit();
-  }
-
-function getData() {
-    str1 = "transporte/energia-no-suministrada-ens";
-    str2 = "month";
-    tableau.connectionName = "API Tableau";
-    tableau.submit();
-} */
 
 function getData() {
     url = "https://apidatos.ree.es/es/datos/"+str_value+"?start_date=2021-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=hour";
