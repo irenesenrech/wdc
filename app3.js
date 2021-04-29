@@ -95,6 +95,7 @@ function getValue(value) {
         str_value = "demanda/demanda-tiempo-real";
     }
     url = "https://apidatos.ree.es/es/datos/"+value+"?start_date=2021-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=hour";
+    console.log(url);
     getData;
 }
 
