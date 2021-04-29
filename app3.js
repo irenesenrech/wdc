@@ -75,13 +75,13 @@ document.querySelector("#merca").addEventListener("click", getData);
 function getData2() {
     str1 = "mercados/precios-mercados-tiempo-real";
     str2 = "hour";
-    tableau.connectionName = "API Mercados";
+    tableau.connectionName = "API Tableau";
     tableau.submit();
   }
 
   function getData() {
     str1 = "transporte/energia-no-suministrada-ens";
     str2 = "month";
-    tableau.connectionName = "API Transporte";
+    tableau.connectionName = "API Tableau";
     tableau.submit();
 }
