@@ -1,5 +1,4 @@
-var str1;
-var str2;
+var url = "";
 (function () {
   var myConnector = tableau.makeConnector();
   myConnector.getSchema = function (schemaCallback) {
@@ -44,7 +43,7 @@ var str2;
     var i = 0;
     var j = 0;
     $.getJSON(
-      `https://apidatos.ree.es/es/datos/\${str1}?start_date=2021-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=hour${str2}`,
+      url,
       function (resp) {
         var apiData = resp.included;
         for (i = 0, len = apiData.length; i < len; i++) {
@@ -69,19 +68,27 @@ var str2;
   tableau.registerConnector(myConnector);
 })();
 
+document.querySelector("#query").addEventListener("change", getData);
+
 document.querySelector("#trans").addEventListener("click", getData);
 document.querySelector("#merca").addEventListener("click", getData);
 
-function getData2() {
+/* function getData2() {
     str1 = "mercados/precios-mercados-tiempo-real";
     str2 = "hour";
     tableau.connectionName = "API Tableau";
     tableau.submit();
   }
 
-  function getData() {
+function getData() {
     str1 = "transporte/energia-no-suministrada-ens";
     str2 = "month";
+    tableau.connectionName = "API Tableau";
+    tableau.submit();
+} */
+
+function getData() {
+    url = `https://apidatos.ree.es/es/datos/${event.target.value}?start_date=2021-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=hour`;
     tableau.connectionName = "API Tableau";
     tableau.submit();
 }
