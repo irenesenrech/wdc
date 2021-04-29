@@ -41,16 +41,16 @@
     let tableData = [];
     var i = 0;
     var j = 0;
-    var value = "";
+    var str_value = "";
     var element = document.querySelector("#query");
     var value = element.value;
     if (value=="Mercados") {
-        value = "mercados/precios-mercados-tiempo-real";
+        str_value = "mercados/precios-mercados-tiempo-real";
     } else {
-        value = "demanda/demanda-tiempo-real";
+        str_value = "demanda/demanda-tiempo-real";
     }
     $.getJSON(
-        url = "https://apidatos.ree.es/es/datos/"+value+"?start_date=2021-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=hour",
+        url = "https://apidatos.ree.es/es/datos/"+str_value+"?start_date=2021-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=hour",
       function (resp) {
         var apiData = resp.included;
         for (i = 0, len = apiData.length; i < len; i++) {
