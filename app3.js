@@ -41,7 +41,7 @@
     let tableData = [];
     let i = 0;
     let j = 0;
-    let str_value = "";
+    var str_value = "";
     let element = document.querySelector("#query");
     let value = element.value;
     if (value=="Mercados") {
