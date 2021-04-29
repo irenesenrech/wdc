@@ -1,5 +1,5 @@
-var str1 = "transporte/energia-no-suministrada-ens";
-var str2 = "month";
+var str1;
+var str2;
 (function () {
   var myConnector = tableau.makeConnector();
   myConnector.getSchema = function (schemaCallback) {
@@ -70,18 +70,18 @@ var str2 = "month";
 })();
 
 document.querySelector("#trans").addEventListener("click", getData);
-document.querySelector("#merca").addEventListener("click", getData);
+document.querySelector("#merca").addEventListener("click", getData2);
 
 function getData2() {
     str1 = "mercados/precios-mercados-tiempo-real";
     str2 = "hour";
-    tableau.connectionName = "API Datos";
+    tableau.connectionName = "API Mercados";
     tableau.submit();
   }
 
   function getData() {
     str1 = "transporte/energia-no-suministrada-ens";
     str2 = "month";
-    tableau.connectionName = "API Datos";
+    tableau.connectionName = "API Transporte";
     tableau.submit();
 }
