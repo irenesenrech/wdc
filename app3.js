@@ -39,11 +39,11 @@
 
   myConnector.getData = function (table, doneCallback) {
     let tableData = [];
-    var i = 0;
-    var j = 0;
-    var str_value = "";
-    var element = document.querySelector("#query");
-    var value = element.value;
+    let i = 0;
+    let j = 0;
+    let str_value = "";
+    let element = document.querySelector("#query");
+    let value = element.value;
     if (value=="Mercados") {
         str_value = "mercados/precios-mercados-tiempo-real";
     } else {
@@ -75,7 +75,7 @@
   tableau.registerConnector(myConnector);
 })();
 
-element.addEventListener("change", getData);
+document.querySelector("#query").addEventListener("change", getData);
 
 /* 
 document.querySelector("#trans").addEventListener("click", getData);
