@@ -68,7 +68,8 @@ var url = "";
   tableau.registerConnector(myConnector);
 })();
 
-document.querySelectorAll("#query").addEventListener("change", getData);
+var element = document.querySelector("#query")
+element.addEventListener("change", getValue(element.value));
 /* 
 document.querySelector("#trans").addEventListener("click", getData);
 document.querySelector("#merca").addEventListener("click", getData); */
@@ -87,8 +88,12 @@ function getData() {
     tableau.submit();
 } */
 
+function getValue(value) {
+    url = "https://apidatos.ree.es/es/datos/"+value+"?start_date=2021-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=hour";
+    getData;
+}
+
 function getData() {
-    url = `https://apidatos.ree.es/es/datos/${event.target.value}?start_date=2021-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=hour`;
     tableau.connectionName = "API Tableau";
     tableau.submit();
 }
