@@ -68,10 +68,10 @@ var url = "";
   tableau.registerConnector(myConnector);
 })();
 
-document.querySelector("#query").addEventListener("change", getData);
-
+document.querySelectorAll("#query").addEventListener("change", getData);
+/* 
 document.querySelector("#trans").addEventListener("click", getData);
-document.querySelector("#merca").addEventListener("click", getData);
+document.querySelector("#merca").addEventListener("click", getData); */
 
 /* function getData2() {
     str1 = "mercados/precios-mercados-tiempo-real";
