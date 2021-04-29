@@ -1,4 +1,3 @@
-var url = "";
 (function () {
   var myConnector = tableau.makeConnector();
   myConnector.getSchema = function (schemaCallback) {
@@ -42,8 +41,16 @@ var url = "";
     let tableData = [];
     var i = 0;
     var j = 0;
+    var value = "";
+    var element = document.querySelector("#query");
+    var value = element.value;
+    if (value=="Mercados") {
+        value = "mercados/precios-mercados-tiempo-real";
+    } else {
+        value = "demanda/demanda-tiempo-real";
+    }
     $.getJSON(
-      url,
+        url = "https://apidatos.ree.es/es/datos/"+value+"?start_date=2021-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=hour",
       function (resp) {
         var apiData = resp.included;
         for (i = 0, len = apiData.length; i < len; i++) {
@@ -68,8 +75,6 @@ var url = "";
   tableau.registerConnector(myConnector);
 })();
 
-var element = document.querySelector("#query");
-var value = element.value;
 element.addEventListener("change", getData);
 
 /* 
@@ -91,11 +96,6 @@ function getData() {
 } */
 
 function getData() {
-    if (value=="Mercados") {
-        str_value = "mercados/precios-mercados-tiempo-real";
-    } else {
-        str_value = "demanda/demanda-tiempo-real";
-    }
     url = "https://apidatos.ree.es/es/datos/"+str_value+"?start_date=2021-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=hour";
     tableau.connectionName = "API Tableau";
     tableau.submit();
