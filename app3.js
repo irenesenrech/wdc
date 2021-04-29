@@ -1,6 +1,13 @@
 var str_value = "";
 
 function getConnector() {
+    let element = document.querySelector("#query");
+    let value = element.value;
+    if (value=="mercados") {
+        str_value = "mercados/precios-mercados-tiempo-real";
+    } else if (value=="demanda") {
+        str_value = "demanda/demanda-tiempo-real";
+    }
     (function () {
         var myConnector = tableau.makeConnector();
         myConnector.getSchema = function (schemaCallback) {
@@ -72,13 +79,6 @@ function getConnector() {
 }
 
 function getData() {
-    let element = document.querySelector("#query");
-    let value = element.value;
-    if (value=="mercados") {
-        str_value = "mercados/precios-mercados-tiempo-real";
-    } else {
-        str_value = "demanda/demanda-tiempo-real";
-    }
     tableau.connectionName = "API Tableau";
     tableau.submit();
 }
