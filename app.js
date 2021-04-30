@@ -45,9 +45,8 @@ console.log("¡Funciona!");
     var i = 0;
     var j = 0;
     var today = Date.now().toDateString().slice(0, 16);
-    console.log(today);
     $.getJSON(
-      "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date="+today+"&end_date="+today+"&time_trunc=day",
+      "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=&end_date=2021-04-27T23:59&time_trunc=day",
       function (resp) {
         var apiData = resp.included;
         // Iterate over the JSON object
