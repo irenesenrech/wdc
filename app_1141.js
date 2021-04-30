@@ -50,22 +50,18 @@ console.log("This is working!");
       `https://apidatos.ree.es/es/datos/mercados/precios-mercados-tiempo-real?start_date=${today}&end_date=${today}&time_trunc=day`,
       function (resp) {
         var apiData = resp.included;
-        // Iterate over the JSON object
         for (i = 0, len = apiData.length; i < len; i++) {
-          for (j = 0; j < apiData[i].attributes.content.length; j++) {
-            var dic = apiData[i].attributes.content[j];
-            for (k = 0; k < dic.attributes.values.length; k++) {
-              var dic2 = dic.attributes.values[k];
-              tableData.push({
-                datetime: dic2.datetime,
-                percentage: dic2.percentage,
-                value: Number(dic2.value),
-                lastupdatedate: resp.data.attributes["last-update"],
-                type: dic.type,
-                id: dic.id,
-              });
+            for (j = 0; j < apiData[i].attributes.values.length; j++) {
+                var dic = apiData[i].attributes.values[j];
+                tableData.push({
+                    datetime: dic.datetime,
+                    percentage: dic.percentage,
+                    value: Number(dic.value),
+                    lastupdatedate: resp.data.attributes["last-update"],
+                    type: apiData[i].type,
+                    id: apiData[i].id,
+                });
             }
-          }
         }
         table.appendRows(tableData);
         doneCallback();
