@@ -42,13 +42,11 @@ console.log("This is working!");
 
   myConnector.getData = function (table, doneCallback) {
     let tableData = [];
-    var i = 0;
-    var j = 0;
-    var k = 0;
-    var today = Date.now().toDateString().slice(0, 16);
+    let i = 0;
+    let j = 0;
     $.getJSON(
-      `https://apidatos.ree.es/es/datos/mercados/precios-mercados-tiempo-real?start_date=${today}&end_date=${today}&time_trunc=day`,
-      function (resp) {
+        url = "https://apidatos.ree.es/es/datos/"+str_value+"?start_date=2021-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=hour",
+    function (resp) {
         var apiData = resp.included;
         for (i = 0, len = apiData.length; i < len; i++) {
             for (j = 0; j < apiData[i].attributes.values.length; j++) {
@@ -65,9 +63,9 @@ console.log("This is working!");
         }
         table.appendRows(tableData);
         doneCallback();
-      }
+    }
     );
-  };
+};
 
   tableau.registerConnector(myConnector);
 })();
