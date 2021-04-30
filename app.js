@@ -44,7 +44,7 @@ console.log("¡Funciona!");
     let tableData = [];
     var i = 0;
     var j = 0;
-    var today = Date.now().toDateString().slice(0, 16);
+    //var today = Date.now().toDateString().slice(0, 16);
     $.getJSON(
       "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=2021-04-27T00:00&end_date=2021-04-27T23:59&time_trunc=day",
       function (resp) {
