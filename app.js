@@ -45,6 +45,7 @@ console.log("¡Funciona!");
     var i = 0;
     var j = 0;
     var today = Date.now().toDateString().slice(0, 16);
+    console.log(today);
     $.getJSON(
       "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date="+today+"&end_date="+today+"&time_trunc=day",
       function (resp) {
