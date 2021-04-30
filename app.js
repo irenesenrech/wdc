@@ -44,9 +44,12 @@ console.log("¡Funciona!");
     let tableData = [];
     var i = 0;
     var j = 0;
-    //var today = Date.now().toDateString().slice(0, 16);
+    var today = Date.now();
+    var formatted_today=today.toDateString().slice(0, 16);
+    var last_year_today = new Date(today.getFullYear() - 1, today.getMonth() + 1, today.getDate());
+    var formatted_last_year_today = last_year_today.toDateString().slice(0, 16);
     $.getJSON(
-      "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=2021-04-20T00:00&end_date=2021-04-27T23:59&time_trunc=day",
+      "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=2"+formatted_last_year_today+"&end_date="+formatted_today+"&time_trunc=day",
       function (resp) {
         var apiData = resp.included;
         // Iterate over the JSON object
