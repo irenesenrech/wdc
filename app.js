@@ -54,10 +54,9 @@ $(document).ready(function () {
 
     var dateObj = JSON.parse(tableau.connectionData),
             dateString = "starttime=" + dateObj.startDate + "&endtime=" + dateObj.endDate,
-            apiCall = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&" + dateString + "&minmagnitude=4.5";
+            apiCall = "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?"+dateString+"&time_trunc=day";
     console.log(apiCall);
     $.getJSON(apiCall,
-      // `https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=${startDate}T00:00&end_date=${endDate}T00:00&time_trunc=day`,
       function (resp) {
         var apiData = resp.included;
         for (i = 0, len = apiData.length; i < len; i++) {
