@@ -1,18 +1,19 @@
-var startDate = new Date();
-var endDate = new Date();
-
-startDate.setDate(startDate.getDate() + 0);
-endDate.setDate(endDate.getDate() + 1);
-
-startDate = startDate.toISOString().slice(0, 10);
-endDate = endDate.toISOString().slice(0, 10);
-
-document.getElementById('#start-date-one').value = startDate;
-document.getElementById('#start-date-one').value = endDate;
-
-console.log (startDate, endDate);
-
 $(document).ready(function () {
+  var startDate = new Date();
+  var endDate = new Date();
+  
+  startDate.setDate(startDate.getDate() + 0);
+  endDate.setDate(endDate.getDate() + 1);
+  
+  startDate = startDate.toISOString().slice(0, 10);
+  endDate = endDate.toISOString().slice(0, 10);
+  
+  document.getElementById('start-date-one').value = startDate;
+  document.getElementById('start-date-one').value = endDate;
+  
+  console.log (startDate);
+
+
   var myConnector = tableau.makeConnector();
 
   myConnector.getSchema = function (schemaCallback) {
