@@ -88,6 +88,7 @@ $(document).ready(function () {
           startDate: $('#start-date-one').val().trim(),
           endDate: $('#end-date-one').val().trim(),
       };
+      console.log (dateObj);
       tableau.connectionData = JSON.stringify(dateObj);
       tableau.connectionName = "REData";
       tableau.submit(); 
