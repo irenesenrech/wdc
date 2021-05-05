@@ -42,16 +42,6 @@ $(document).ready(function () {
     let tableData = [];
     var i = 0;
     var j = 0;
-
-    var startDate = new Date();
-    var endDate = new Date();
-
-    startDate.setDate(startDate.getDate() + 0);
-    endDate.setDate(endDate.getDate() + 1);
-
-    startDate = startDate.toISOString().slice(0, 10);
-    endDate = endDate.toISOString().slice(0, 10);
-
     var dateObj = JSON.parse(tableau.connectionData),
             dateString = "start_date=" + dateObj.startDate + "&end_date=" + dateObj.endDate,
             apiCall = "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?"+dateString+"&time_trunc=day";
@@ -82,6 +72,18 @@ $(document).ready(function () {
 
   $(document).ready(function() {
     $("#submitButton").click(function() {
+      var startDate = new Date();
+      var endDate = new Date();
+  
+      startDate.setDate(startDate.getDate() + 0);
+      endDate.setDate(endDate.getDate() + 1);
+  
+      startDate = startDate.toISOString().slice(0, 10);
+      endDate = endDate.toISOString().slice(0, 10);
+
+      $('#start-date-one').value = startDate;
+      $('#start-date-one').value = endDate;
+
       var dateObj = {
           startDate: $('#start-date-one').val().trim(),
           endDate: $('#end-date-one').val().trim(),
