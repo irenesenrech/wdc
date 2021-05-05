@@ -53,7 +53,7 @@ $(document).ready(function () {
     endDate = endDate.toISOString().slice(0, 10);
 
     var dateObj = JSON.parse(tableau.connectionData),
-            dateString = "starttime=" + dateObj.startDate + "&endtime=" + dateObj.endDate,
+            dateString = "start_date=" + dateObj.startDate + "&end_date=" + dateObj.endDate,
             apiCall = "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?"+dateString+"&time_trunc=day";
     console.log(apiCall);
     $.getJSON(apiCall,
