@@ -1,3 +1,17 @@
+var startDate = new Date();
+var endDate = new Date();
+
+startDate.setDate(startDate.getDate() + 0);
+endDate.setDate(endDate.getDate() + 1);
+
+startDate = startDate.toISOString().slice(0, 10);
+endDate = endDate.toISOString().slice(0, 10);
+
+document.getElementById('#start-date-one').value = startDate;
+document.getElementById('#start-date-one').value = endDate;
+
+console.log (startDate, endDate);
+
 $(document).ready(function () {
   var myConnector = tableau.makeConnector();
 
@@ -72,20 +86,6 @@ $(document).ready(function () {
 
   $(document).ready(function() {
     $("#submitButton").click(function() {
-      var startDate = new Date();
-      var endDate = new Date();
-  
-      startDate.setDate(startDate.getDate() + 0);
-      endDate.setDate(endDate.getDate() + 1);
-  
-      startDate = startDate.toISOString().slice(0, 10);
-      endDate = endDate.toISOString().slice(0, 10);
-
-      $('#start-date-one').value = startDate;
-      $('#start-date-one').value = endDate;
-
-      console.log (startDate, endDate);
-
       var dateObj = {
           startDate: $('#start-date-one').val().trim(),
           endDate: $('#end-date-one').val().trim(),
