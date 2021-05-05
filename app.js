@@ -1,5 +1,3 @@
-console.log("¡Funciona!");
-
 (function () {
   var myConnector = tableau.makeConnector();
 
@@ -44,15 +42,24 @@ console.log("¡Funciona!");
     let tableData = [];
     var i = 0;
     var j = 0;
-    var today = Date.now();
-    var formatted_today=today.toDateString().slice(0, 16);
-    var last_year_today = new Date(today.getFullYear() - 1, today.getMonth() + 1, today.getDate());
-    var formatted_last_year_today = last_year_today.toDateString().slice(0, 16);
-    $.getJSON(
-      "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=2"+formatted_last_year_today+"&end_date="+formatted_today+"&time_trunc=day",
+
+    var startDate = new Date();
+    var endDate = new Date();
+
+    startDate.setDate(startDate.getDate() + 0);
+    endDate.setDate(endDate.getDate() + 1);
+
+    startDate = startDate.toISOString().slice(0, 10);
+    endDate = endDate.toISOString().slice(0, 10);
+
+    var dateObj = JSON.parse(tableau.connectionData),
+            dateString = "starttime=" + dateObj.startDate + "&endtime=" + dateObj.endDate,
+            apiCall = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&" + dateString + "&minmagnitude=4.5";
+
+    $.getJSON(apiCall,
+      // `https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=${startDate}T00:00&end_date=${endDate}T00:00&time_trunc=day`,
       function (resp) {
         var apiData = resp.included;
-        // Iterate over the JSON object
         for (i = 0, len = apiData.length; i < len; i++) {
           for (j = 0; j < apiData[i].attributes.values.length; j++) {
             var nestedData = apiData[i].attributes.values[j];
@@ -73,11 +80,16 @@ console.log("¡Funciona!");
   };
 
   tableau.registerConnector(myConnector);
+
+  $(document).ready(function() {
+    $("#submitButton").click(function() {
+      var dateObj = {
+          startDate: $('#start-date-one').val().trim(),
+          endDate: $('#end-date-one').val().trim(),
+      };
+      tableau.connectionData = JSON.stringify(dateObj);
+      tableau.connectionName = "REData";
+      tableau.submit(); 
+      })
+    });
 })();
-
-document.querySelector("#getData").addEventListener("click", getData);
-
-function getData() {
-  tableau.connectionName = "REData";
-  tableau.submit();
-}
