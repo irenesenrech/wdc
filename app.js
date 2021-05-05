@@ -9,10 +9,7 @@ $(document).ready(function () {
   endDate = endDate.toISOString().slice(0, 10);
   
   document.getElementById('start-date-one').value = startDate;
-  document.getElementById('start-date-one').value = endDate;
-  
-  console.log (startDate);
-
+  document.getElementById('end-date-one').value = endDate;
 
   var myConnector = tableau.makeConnector();
 
