@@ -56,7 +56,7 @@ $(document).ready(function () {
     var j = 0;
     var dateObj = JSON.parse(tableau.connectionData),
             dateString = "start_date=" + dateObj.startDate + "&end_date=" + dateObj.endDate,
-            apiCall = "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?"+dateString+"&time_trunc=day";
+            apiCall = "https://apidatos.ree.es/es/datos/"+query+"?"+dateString+"&time_trunc="+period;
     console.log(apiCall);
     $.getJSON(apiCall,
       function (resp) {
@@ -84,6 +84,15 @@ $(document).ready(function () {
 
   $(document).ready(function() {
     $("#submitButton").click(function() {
+      var query = "generacion/estructura-generacion";
+      var period = "day";
+      if ($("#query option:selected").text() == "Generación") {
+        query = "generacion/estructura-generacion";
+        period = "day";
+      } else if ($("#query option:selected").text() == "Demanda") {
+        query = "demanda/demanda-tiempo-real";
+        period = "hour";
+      }
       var dateObj = {
           startDate: $('#start-date-one').val().trim(),
           endDate: $('#end-date-one').val().trim(),
