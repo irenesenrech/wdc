@@ -64,6 +64,7 @@ main {
     justify-content: flex-start;
 }
 select {
+    text-align-last:center;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     border-width: 0px;
