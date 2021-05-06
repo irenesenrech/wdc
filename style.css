@@ -12,10 +12,10 @@
     width: 50%;
 }
 .left {
-    text-align: left;
+    text-align: right;
 }
 .right {
-    text-align: right;
+    text-align: left;
 }
 h3 {
     text-align: center;
