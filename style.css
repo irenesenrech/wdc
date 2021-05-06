@@ -6,10 +6,16 @@
 }
 .w100 {
     width: 100%;
+    text-align: center;
 }
 .w50 {
     width: 50%;
-    text-align: center;
+}
+.left {
+    text-align: left;
+}
+.right {
+    text-align: right;
 }
 h3 {
     text-align: center;
