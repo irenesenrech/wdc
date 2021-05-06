@@ -91,7 +91,7 @@ $(document).ready(function () {
         query = "demanda/demanda-tiempo-real";
         period = "hour";
       } else if ($("#query option:selected").text() == "Mercados") {
-        query = "precios-mercados-tiempo-real";
+        query = "mercados/precios-mercados-tiempo-real";
         period = "hour";
       };
       var dateObj = {
