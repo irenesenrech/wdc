@@ -1,0 +1,12 @@
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.w100 {
+    width: 100%;
+}
+.w50 {
+    width: 50%;
+}
