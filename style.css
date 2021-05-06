@@ -1,3 +1,9 @@
+img {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    width: 15%;
+}
 .h100 {
     height: 100%;
 }
