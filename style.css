@@ -1,8 +1,8 @@
 .flex {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: baseline;
 }
 .w100 {
     width: 100%;
