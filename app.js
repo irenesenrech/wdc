@@ -56,7 +56,7 @@ $(document).ready(function () {
     var j = 0;
     var dateObj = JSON.parse(tableau.connectionData),
             dateString = "start_date=" + dateObj.startDate + "&end_date=" + dateObj.endDate,
-            apiCall = "https://apidatos.ree.es/es/datos/"+query+"?"+dateString+"&time_trunc="+period;
+            apiCall = "https://apidatos.ree.es/es/datos/"+dateObj.q+"?"+dateString+"&time_trunc="+dateObj.t;
     console.log(apiCall);
     $.getJSON(apiCall,
       function (resp) {
@@ -84,8 +84,6 @@ $(document).ready(function () {
 
   $(document).ready(function() {
     $("#submitButton").click(function() {
-      var query = "generacion/estructura-generacion";
-      var period = "day";
       if ($("#query option:selected").text() == "Generación") {
         query = "generacion/estructura-generacion";
         period = "day";
@@ -96,6 +94,8 @@ $(document).ready(function () {
       var dateObj = {
           startDate: $('#start-date-one').val().trim(),
           endDate: $('#end-date-one').val().trim(),
+          q: query,
+          t: period,
       };
       tableau.connectionData = JSON.stringify(dateObj);
       tableau.connectionName = "REData";
