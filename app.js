@@ -90,7 +90,10 @@ $(document).ready(function () {
       } else if ($("#query option:selected").text() == "Demanda") {
         query = "demanda/demanda-tiempo-real";
         period = "hour";
-      }
+      } else if ($("#query option:selected").text() == "Mercados") {
+        query = "precios-mercados-tiempo-real";
+        period = "hour";
+      };
       var dateObj = {
           startDate: $('#start-date-one').val().trim(),
           endDate: $('#end-date-one').val().trim(),
