@@ -54,11 +54,49 @@ $(document).ready(function () {
     let tableData = [];
     var i = 0;
     var j = 0;
+
+    var startDate = new Date();
+    var endDate = new Date();
+
+    // startDate será hoy, y endDate mañana (con lo que la API solo devuelve 1 dato, el de hoy a las 00:00)
+    // Se pueden restar días para obtener días a partir de ayer
+    startDate.setDate(startDate.getDate() + 0);
+    endDate.setDate(endDate.getDate() + 1);
+
+    // Convertimos al formato YYYY-MM-DD
+    startDate = startDate.toISOString().slice(0, 10);
+    endDate = endDate.toISOString().slice(0, 10);
+    /* let tableData = [];
+    var i = 0;
+    var j = 0; */
     var dateObj = JSON.parse(tableau.connectionData),
             dateString = "start_date=" + dateObj.startDate + "&end_date=" + dateObj.endDate,
             apiCall = "https://apidatos.ree.es/es/datos/"+dateObj.q+"?"+dateString+"&time_trunc="+dateObj.t;
     console.log(apiCall);
-    $.getJSON(apiCall,
+    $.getJSON(
+      `https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=${startDate}T00:00&end_date=${endDate}T00:00&time_trunc=day`,
+      function (resp) {
+        var apiData = resp.included;
+        // Iterate over the JSON object
+        for (i = 0, len = apiData.length; i < len; i++) {
+          for (j = 0; j < apiData[i].attributes.values.length; j++) {
+            var nestedData = apiData[i].attributes.values[j];
+            tableData.push({
+              FechaHora: nestedData.datetime,
+              Porcentaje: nestedData.percentage,
+              Valor: Number(nestedData.value),
+              Ultima_actualizacion: resp.data.attributes["last-update"],
+              Tipologia: apiData[i].type,
+              ID: apiData[i].id,
+            });
+          }
+        }
+        table.appendRows(tableData);
+        doneCallback();
+      }
+    );
+  };
+    /* $.getJSON(apiCall,
       function (resp) {
         var apiData = resp.included;
         for (i = 0, len = apiData.length; i < len; i++) {
@@ -78,7 +116,7 @@ $(document).ready(function () {
         doneCallback();
       }
     );
-  };
+  }; */
 
   tableau.registerConnector(myConnector);
 
