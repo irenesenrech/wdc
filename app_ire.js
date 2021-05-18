@@ -85,7 +85,7 @@ console.log("¡Funciona!");
   tableau.registerConnector(myConnector);
 })();
 
-document.querySelector("#getData").addEventListener("click", getData);
+document.querySelector("#submitButton").addEventListener("click", getData);
 
 function getData() {
   tableau.connectionName = "REData";
