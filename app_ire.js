@@ -59,7 +59,7 @@ console.log("¡Funciona!");
 
 
     $.getJSON(
-      `https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=${startDate}T00:00&end_date=${endDate}T00:00&time_trunc=day`,
+      `https://apidatos.ree.es/es/datos/demanda/demanda-tiempo-real?start_date=${startDate}T00:00&end_date=${endDate}T00:00&time_trunc=hour`,
       function (resp) {
         var apiData = resp.included;
         // Iterate over the JSON object
